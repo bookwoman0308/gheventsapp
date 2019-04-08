@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Docker Rails scaffolding derived from this tutorial:
+https://www.youtube.com/watch?v=a-jcTib9ZPA
 
-Things you may want to cover:
+Made some minor adjustments to the Dockerfile.
 
-* Ruby version
+To run locally, download the repository and then use the following commands:
 
-* System dependencies
+docker-compose run app rails new . --force
+docker-compose build
+docker-compose up -d
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+View the new Rails app at http://localhost:3001
