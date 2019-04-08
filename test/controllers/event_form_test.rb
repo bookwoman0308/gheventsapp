@@ -25,4 +25,64 @@ class EventFormsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'form input[type="submit"][value="Submit"]'
   end
 
+  def test_valid_user_after_submit
+    form_params = {
+      event_form: {
+        user_name: "bookwoman0308"
+      }
+    }
+    post "/forms/github-search", params: form_params
+    assert_response :ok
+  end
+
+  def test_nonexist_user_after_submit
+    form_params = {
+      event_form: {
+        user_name: "jump1234"
+      }
+    }
+    post "/forms/github-search", params: form_params
+    assert_response :forbidden
+  end
+
+  def test_invalid_user_double_hyphens_after_submit
+    form_params = {
+      event_form: {
+        user_name: "jump--1234"
+      }
+    }
+    post "/forms/github-search", params: form_params
+    assert_response :forbidden
+  end
+
+  def test_invalid_user_starts_with_hyphen_after_submit
+    form_params = {
+      event_form: {
+        user_name: "-person"
+      }
+    }
+    post "/forms/github-search", params: form_params
+    assert_response :forbidden
+  end
+
+  def test_invalid_user_ends_with_hyphen_after_submit
+    form_params = {
+      event_form: {
+        user_name: "person-"
+      }
+    }
+    post "/forms/github-search", params: form_params
+    assert_response :forbidden
+  end
+
+    def test_invalid_user_name_too_long_after_submit
+    form_params = {
+      event_form: {
+        user_name: "123456789123456789123456789123456789123456789"
+      }
+    }
+    post "/forms/github-search", params: form_params
+    assert_response :forbidden
+  end
+
 end

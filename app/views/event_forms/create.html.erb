@@ -1,0 +1,28 @@
+<style type="text/css">
+  h1 {
+    font-family: Arial;
+    font-size: 1.5em;
+    text-align: center;
+  }
+  td {
+    font-family: Arial;
+    font-size: 1em;
+  }
+</style>
+
+<h1>GitHub Events for <%= username %></h1>
+
+<br />
+
+<table>
+<% for @event in github_event[:data] %>
+	<tr>
+	<td style="padding:10px">Event ID: <%= @event['id'] %></td>
+	<td style="padding:10px">Event Type: <%= @event['type'] %></td>
+	<td style="padding:10px">Repo Name: <%= @event['repo']['name'] %></td>
+	<td style="padding:10px">Public?: <%= @event['public'] %></td>
+	<td style="padding:10px">Date: <%= @event['created_at'] %></td>
+
+</tr>
+<% end %>
+</table>
