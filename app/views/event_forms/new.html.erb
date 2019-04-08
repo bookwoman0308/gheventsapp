@@ -1,0 +1,18 @@
+
+<%= form_for(@form, class: 'needs-validation') do |f| %>
+  <h1 style="font-family: Sans-Serif;">GitHub Events API User Search</h1>
+
+  <br />
+
+  <p style="font-family: Sans-Serif;">Enter in a valid GitHub username to see events info</p>
+
+  <br />
+
+  <%= f.text_field :user_name, required: true, :style => 'width:30%;', :class => "user-name" %><br />
+
+  <br />
+
+  <div class="submit-button">
+    <%= f.submit(class: "submit-button") %>
+  </div>
+<% end %>

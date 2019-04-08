@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: redirect('/forms/github-search')
+
+  scope(:forms) do
+    resources :event_forms, path: 'github-search'
+  end
 end
